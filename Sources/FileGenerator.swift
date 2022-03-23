@@ -14,10 +14,9 @@ func fileGenerator(
             .joined(separator: "\n")
         let directoryPath = "\(outputPath)/\(key).lproj"
         var isDir: ObjCBool = true
-        if fileManager.fileExists(atPath: directoryPath, isDirectory: &isDir) {
-            try fileManager.removeItem(atPath: directoryPath)
+        if !fileManager.fileExists(atPath: directoryPath, isDirectory: &isDir) {
+             try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: false, attributes: [:])
         }
-        try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: false, attributes: [:])
         let filePath = "\(directoryPath)/Localizable.strings"
         isDir = false
         if fileManager.fileExists(atPath: filePath, isDirectory: &isDir) {
