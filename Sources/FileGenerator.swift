@@ -17,7 +17,7 @@ func fileGenerator(
         if !fileManager.fileExists(atPath: directoryPath, isDirectory: &isDir) {
              try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: false, attributes: [:])
         }
-        let filePath = "\(directoryPath)/Localizable.strings"
+        let filePath = "\(directoryPath)/LocalizableTest.strings"
         isDir = false
         if fileManager.fileExists(atPath: filePath, isDirectory: &isDir) {
             try fileManager.removeItem(atPath: filePath)
